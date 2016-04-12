@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+
+    <title>知识产权局</title>
+    <style id="style">
+
+    </style>
+    <link rel="stylesheet" href="./static/css/index.min.css">
+    <!--<script src="./static/js/loading.js"></script>-->
+</head>
+<body>
+
+<div id="loading">
+   <!-- <img src="./static/images/loading.svg" alt="">-->
+    正在进入...
+</div>
+<article id="fly-main">
+    <header class="sideshow">
+        <canvas id="sideshow-canvas"></canvas>
+    </header>
+    <section class='fly-logo-container'>
+        <div class="fly-logo">
+            <img draggable="false" src="./static/images/logo.png" alt="">
+        </div>
+        <div class="ar ar1"><img src="./static/images/ar1.png" alt=""></div>
+        <div class="ar ar2"><img src="./static/images/ar2.png" alt=""></div>
+        <div class="ar ar3"><img src="./static/images/ar3.png" alt=""></div>
+        <div class="ar ar4"><img src="./static/images/ar4.png" alt=""></div>
+        <div class="ar ar5"><img src="./static/images/ar5.png" alt=""></div>
+        <div class="ar ar6"><img src="./static/images/ar6.png" alt=""></div>
+    </section>
+    <section class="fly-banner">
+        <img draggable="false" src="./static/images/bannaer.png" alt="">
+    </section>
+    <div class="fly-text">
+        <p>
+            门户网站十年沧桑，一路风雨，我们不畏艰难，风雨同舟。如今我们拥有一个国家站和47个地方站组成的全国知识产权局系统政府门户网站群。在局领导的关怀和领导下，在兄弟单位的支持和帮助下，我们才会取得今天的成绩。感谢同事们的努力，感谢地方站信息员的付出，我们将继续努力，勇于进取，再攀高峰。
+        </p>
+    </div>
+    <div class="nav-canvas-container">
+        <canvas id="nav-canvas" width="1200" height="400"></canvas>
+    </div>
+</article>
+
+<script src="static/libs/createjs.js"></script>
+<script id="script" src="static/js/index.js"
+        onload="document.getElementById('loading').classList.add('hide');document.getElementById('fly-main').classList.add('active')"></script>
+
+</body>
+</html>

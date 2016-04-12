@@ -1,0 +1,263 @@
+html, body, div, p, ul, li, ol, dl, dt, dd, header, footer, video, h1, h2, h3, h4, canvas, section, figure {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+html, body {
+  height: 100%;
+}
+
+img {
+  border: none;
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+}
+
+input, textarea {
+  outline: none;
+}
+
+.position(a) {
+  position: absolute;
+}
+
+.position(r) {
+  position: relative;
+}
+
+.position(f) {
+  position: fixed;
+}
+
+.opacity(@value:0) {
+  opacity: @value;
+}
+
+.transform(@value) {
+  -webkit-transform: @value;
+  transform: @value;
+}
+.transformOrigin(@value) {
+  -webkit-transform-origin: @value;
+  transform-origin: @value;
+}
+
+.background(@bg) {
+  background: @bg;
+}
+
+.backgroundSize(@value:cover) {
+  background-size: @value;
+}
+
+.transition_transform(@value) {
+  -webkit-transition: -webkit-transform @value;
+  transition: transform @value;
+}
+
+.transform_origin(@value:center) {
+  -webkit-transform-origin: @value;
+  transform-origin: @value;
+}
+
+.transition(@value) {
+  -webkit-transition: @value;
+  transition: @value;
+}
+
+.transitionTimingFunction(@value:cubic-bezier(1, -0.025, 1, 0.865)) {
+  -webkit-transition-timing-function: @value;
+  transition-timing-function: @value;
+}
+
+.transform(@value) {
+  -webkit-transform: @value;
+  transform: @value;
+}
+
+.background(@bg) {
+  background: @bg;
+}
+
+.backgroundSize(@value:cover) {
+  background-size: @value;
+}
+
+.animation(@value) {
+  -webkit-animation: @value;
+  animation: @value;
+}
+
+.transform3d {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  -webkit-perspective: 800px;
+}
+
+.displayBox(@value) {
+  display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-box-orient: @value;
+}
+
+body {
+  font-family: 'Microsoft Yahei', Tahoma, Helvetica, Arial, sans-serif;
+  height: 100%;
+  overflow: hidden;
+  font-size:14px;
+  font-weight:normal;
+}
+
+
+#loading{
+  width:100%;
+  height:100%;
+  color:#fff;
+  font-size: 20px;
+  position: absolute;
+  background:#07ecd0;
+  overflow: hidden;
+  .transition(.7s);
+  z-index:100;
+  .transitionTimingFunction(cubic-bezier(0.18, 1.18, 1, 0.99));
+  &.hide{
+    opacity:0;
+    z-index:-1;
+  }
+}
+
+#loading img{
+  width:100px;
+  height:100px;
+  position: absolute;
+  left:50%;
+  top:50%;
+  margin:-50px 0 0 -50px;
+}
+
+#fly-main{
+  opacity:0;
+}
+#fly-main.active{
+  opacity:1;
+  .transition(1s);
+}
+
+#fly-main{
+  width:100%;
+  height:100%;
+  left:0;
+  top:0;
+  background:url("../images/loding-bg.jpg") no-repeat center bottom;
+  background-size:cover;
+  .sideshow{
+    .position(a);
+    left:0;
+    top:0;
+
+  }
+  .fly-logo-container{
+    .transform3d;
+    z-index:2;
+    width:874px;
+    height:3.1rem;
+    .position(a);
+    left:50%;
+    margin-left:-437px;
+    .fly-logo{
+      margin:.5rem auto 0;
+      width:60%;
+    }
+    .ar{
+      .position(a);
+      width:.7rem;
+    }
+    .ar1{
+      width:.2rem;
+      left:35%;
+      top:30px;
+    }
+    .ar2{
+      left:.4rem;
+      bottom:1.42rem;
+      width:.4rem;
+    }
+    .ar3{
+      bottom:0;
+      left:60%;
+      width:.2rem;
+    }
+    .ar4{
+      right:-1.2rem;
+      bottom:.5rem;
+    }
+    .ar5{
+      top:1rem;
+      right:.8rem;
+      width:.3rem;
+    }
+    .ar6{
+      top:.3rem;
+      left:60%;
+      width:.3rem;
+    }
+  }
+
+  .fly-banner{
+    .position(a);
+    top:37%;
+    left: 0;
+    z-index:1;
+  }
+  .fly-text{
+    z-index: 10;
+    width:960px;
+    .position(a);
+    left:50%;
+    margin-left:-480px;
+    top:50%;
+    z-index:3;
+    p{
+      span{
+        color:#233855;
+        display: inline-block;
+        &:nth-of-type(1){
+          margin-left:2em;
+        }
+        .transform(translate3d(-40px,-40px,0));
+        opacity:0;
+        .transition(.3s);
+        &.active{
+          .transform(translate3d(0,0,0));
+          opacity:1;
+        }
+      }
+
+
+    }
+
+  }
+  .nav-canvas-container{
+    z-index:1;
+    width:1200px;
+    height:400px;
+    position: absolute;
+    bottom:10px;
+    left:50%;
+    margin-left:-600px;
+    canvas{
+    }
+  }
+}
+
