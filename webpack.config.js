@@ -1,11 +1,17 @@
 var config = {
-    entry: [
-        './index.es6'
-    ],
+    entry: {
+        'index':"./index.es6",
+        'huigu':'./huigu.es6',
+        'licheng':'./licheng.es6',
+        'tushuo':'./tushuo.es6',
+        'fengcai':'./fengcai.es6',
+        'shuhuai':'./shuhuai.es6'
+    },
     output: {
         publickPath: './static/js',
         path: './static/js',
-        filename: 'index.js'
+        filename: "[name].js",
+        chunkFilename: "[name].js"
     },
   /*  devServer: {
         inline: true,

@@ -1,0 +1,273 @@
+html, body, div, p, ul, li, ol, dl, dt, dd, header, footer, video, h1, h2, h3, h4, canvas, section, figure {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+html, body {
+  height: 100%;
+}
+
+img {
+  border: none;
+  vertical-align: top;
+  width: 100%;
+  height: auto;
+
+}
+
+input, textarea {
+  outline: none;
+}
+
+.position(a) {
+  position: absolute;
+}
+
+.position(r) {
+  position: relative;
+}
+
+.position(f) {
+  position: fixed;
+}
+
+.opacity(@value:0) {
+  opacity: @value;
+}
+
+.transform(@value) {
+  -webkit-transform: @value;
+  transform: @value;
+}
+
+.transformOrigin(@value) {
+  -webkit-transform-origin: @value;
+  transform-origin: @value;
+}
+
+.background(@bg) {
+  background: @bg;
+}
+
+.backgroundSize(@value:cover) {
+  background-size: @value;
+}
+
+.transition_transform(@value) {
+  -webkit-transition: -webkit-transform @value;
+  transition: transform @value;
+}
+
+.transform_origin(@value:center) {
+  -webkit-transform-origin: @value;
+  transform-origin: @value;
+}
+
+.transition(@value) {
+  -webkit-transition: @value;
+  transition: @value;
+}
+
+.transitionTimingFunction(@value:cubic-bezier(1, -0.025, 1, 0.865)) {
+  -webkit-transition-timing-function: @value;
+  transition-timing-function: @value;
+}
+
+.transform(@value) {
+  -webkit-transform: @value;
+  transform: @value;
+}
+
+.background(@bg) {
+  background: @bg;
+}
+
+.backgroundSize(@value:cover) {
+  background-size: @value;
+}
+
+.animation(@value) {
+  -webkit-animation: @value;
+  animation: @value;
+}
+
+.transform3d {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  -webkit-perspective: 800px;
+}
+
+.displayBox(@value) {
+  display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-box-orient: @value;
+}
+
+body {
+  font-family: 'Microsoft Yahei', Tahoma, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.fly-v-gradient-line(@minOpacity:.2,@maxOpacity:1) {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(103, 147, 250, @minOpacity)), color-stop(0.25, rgba(103, 147, 250, @maxOpacity)), color-stop(0.25, rgba(103, 147, 250, @maxOpacity)), to(rgba(103, 147, 250, @minOpacity)));
+  background: -moz-linear-gradient(top, rgba(103, 147, 250, @minOpacity), rgba(103, 147, 250, @maxOpacity) 25%, rgba(103, 147, 250, @maxOpacity) 75%, rgba(103, 147, 250, @minOpacity));
+  background: -ms-linear-gradient(top, rgba(103, 147, 250, @minOpacity), rgba(103, 147, 250, @maxOpacity) 25%, rgba(103, 147, 250, @maxOpacity) 75%, rgba(103, 147, 250, @minOpacity));
+}
+
+#fly-main {
+  z-index:1;
+  width: 1200px;
+  display: flex;
+  display: -webkit-flex;
+  .position(r);
+  margin: 0 auto 0;
+  .left-nav {
+    flex-grow: 2;
+    .position(r);
+    .fly-logo {
+      width: .4rem;
+      .position(a);
+      left: 170px;
+      top: 30%;
+    }
+    .time-line-container {
+      width: 130px;
+      height: 100%;
+      .position(a);
+      right: 0;
+      top: 0;
+      @right: 50px;
+      .time-line {
+        width: 1px;
+        height: 100%;
+        .position(a);
+        right: @right;
+        top: 0;
+        .fly-v-gradient-line(0, 1);
+      }
+      .year-container {
+        width: 100%;
+        height: 80%;
+        top:10%;
+        .position(a);
+        display: flex;
+        display: -webkit-flex;
+        flex-flow: column;
+        .year {
+          flex-grow: 1;
+          padding-left: 17px;
+          box-sizing: border-box;
+          width: 100%;
+          height:100%;
+          cursor: pointer;
+          .position(r);
+          &.active{
+            flex-grow: 1;
+            &:before{
+              content: '';
+              .position(a);
+              width: 0;
+              height: 0;
+              border-top: 10px solid transparent;
+              border-right: 18px solid #ff6138;
+              border-bottom: 10px solid transparent;
+              right:0;
+              top:2px;
+            }
+            padding-left: 10px;
+            box-sizing: border-box;
+            .point{
+              border:1px solid rgba(103, 147, 250,.7);
+              background:#eee;
+              top:7px;
+              &:before{
+                content:'';
+                .position(a);
+                width:10px;
+                height:10px;
+                left:2px;
+                top:2px;
+                background:#ff6138;
+                border-radius: 50%;
+              }
+            }
+            span{
+              display: inline-block;
+              background:#ff6138;
+              color:#fff;
+              border-radius: 6px;
+              padding:5px 8px;
+              margin-top:0px;
+              box-sizing: border-box;
+              .position(r);
+              &:before{
+                content:"";
+                .position(a);
+                width:10px;
+                height:10px;
+                border-radius: 2px;
+                background:#ff6138;
+                right:-4px;
+                .transform(rotate(45deg));
+                top:8px;
+              }
+            }
+          }
+          span{
+            margin-top:6px;
+            display: inline-block;
+
+          }
+          .point {
+            @w: 14px;
+            width: @w;
+            height: @w;
+            background: #6793fa;
+            .position(a);
+            border-radius: 50%;
+            top: 7px;
+            right: 50-(@w/2);
+          }
+        }
+      }
+    }
+
+  }
+  .right-content {
+    flex-grow: 4;
+    background: rgba(255, 255, 255, .4);
+    border:1px solid #EEE;
+   .position(r);
+    .fly-slider-container{
+      .position(a);
+      width:100%;
+      left:0;
+      top:0;
+      height:700px;
+      overflow: hidden;
+      background:#eee;
+      ul{
+        .transition_transform(.5s);
+        .transitionTimingFunction(cubic-bezier(0.43, 0.6, 0, 0.98));
+      }
+    }
+  }
+}
+
+@media all and(max-width: 1366px) {
+  #fly-main {
+    width: 1000px;
+  }
+}

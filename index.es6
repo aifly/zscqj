@@ -66,21 +66,9 @@ let util = {
 
                 c1.on('mousedown', (e)=> {
                     var a = document.createElement('a');
-                    a.href = 'http://www.baidu.com';
+                    a.href = e.currentTarget.name+'.html';
                     a.target = "_blank";
-                    switch (e.currentTarget.name) {
-                        case "huigu":
-                            //   a.click();
-                            break;
-                        case "shuhuai":
-                            break;
-                        case "tushuo":
-                            break;
-                        case "licheng":
-                            break;
-                        case "rongyu":
-                            break;
-                    }
+                    a.click();
                 })
 
             }
@@ -149,7 +137,7 @@ let util = {
                 y: 70,
                 src: "./static/images/shuhuai.png",
                 width: 150,
-                name: "shushuai"
+                name: "shuhuai"
 
             },
             {
@@ -185,7 +173,7 @@ let util = {
                 y: 100,
                 src: "./static/images/rongyu.png",
                 width: 150,
-                name: "rongyu"
+                name: "fengcai"
             }, {
                 x: 1100,
                 y: 180,
@@ -217,18 +205,18 @@ let util = {
         document.addEventListener('mousemove', (e)=> {
             let x = e.pageX,
                 y = e.pageY;
-
+            let rotateX = -((y - centerY) / 40),
+                rotateY = ((x - centerX) / 30);
             Array.from(data.ar).forEach((ar, i)=> {
                 let l = (x / (i + 1) / 30),
                     t = (y / (i + 1) / 30);
-                ar.style.transform = 'translate3d(' + l + 'px,' + t + 'px,' + l + 'px)';
-                ar.style.webkitTransform = 'translate3d(' + l + 'px,' + t + 'px,' + l + 'px)';
-                ar.style.oTransform = 'translate3d(' + l + 'px,' + t + 'px,' + l + 'px)';
-                ar.style.mozTransform = 'translate3d(' + l + 'px,' + t + 'px,' + l + 'px)';
+                ar.style.transform = 'translate3d(' + l + 'px,' + t + 'px,' + l + 'px) rotateX(' + rotateX/2 + 'deg) rotateY(' + rotateY/2 + 'deg)' ;
+                ar.style.webkitTransform = 'translate3d(' + l + 'px,' + t + 'px,' + l + 'px) rotateX(' + rotateX/2 + 'deg) rotateY(' + rotateY/2 + 'deg)';
+                ar.style.oTransform = 'translate3d(' + l + 'px,' + t + 'px,' + l + 'px) rotateX(' + rotateX/2 + 'deg) rotateY(' + rotateY/2 + 'deg)';
+                ar.style.mozTransform = 'translate3d(' + l + 'px,' + t + 'px,' + l + 'px) rotateX(' + rotateX/2 + 'deg) rotateY(' + rotateY/2 + 'deg)';
 
             });
-            let rotateX = -((y - centerY) / 40),
-                rotateY = ((x - centerX) / 30);
+
 
             data.logo.style.transform = 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
             data.logo.style.webkitTransform = 'rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
@@ -254,7 +242,6 @@ let util = {
             else{
                 clearInterval(t);
             }
-
             iNow++;
         },70)
 
