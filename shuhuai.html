@@ -5,10 +5,28 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
     <title>十年抒怀</title>
     <link rel="stylesheet" href="./static/css/shuhuai.min.css">
+    <link rel="stylesheet" href="./static/css/temp.min.css">
 </head>
 <body>
-
 <div id="temp"></div>
+<article id="fly-main">
+    <header class="fly-header">
+        <div class="fly-logo">
+            <img src="./static/images/shuhuai-logo.png" alt="十年抒怀logo">
+            <div></div>
+        </div>
+        <section class="fly-pannel-bar">
+            <div class="btn-group before">
+                <a class="active nav" href="http://www.zmiti.com">领导寄语</a>
+                <a class='nav' href="http://www.zmiti.com">信息员感言</a>
+            </div>
+        </section>
+    </header>
+    <section class="fly-panner-container">
+        <canvas width="1200" height="500" id="province-canvas"></canvas>
+    </section>
+</article>
+<script src="./static/libs/createjs.js"></script>
 <script src="./static/js/shuhuai.js"></script>
 </body>
 </html>

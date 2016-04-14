@@ -68,8 +68,75 @@ body {
 #fly-main .left-nav .fly-logo {
   width: .4rem;
   position: absolute;
-  left: 170px;
+  left: 100px;
   top: 30%;
+}
+#fly-main .left-nav .fly-logo div {
+  position: absolute;
+  width: 2px;
+  height: 76px;
+  left: 37px;
+  box-sizing: border-box;
+  top: 1px;
+  -webkit-animation: rotate 3s infinite;
+  animation: rotate 3s infinite;
+}
+#fly-main .left-nav .fly-logo div:before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e65e51;
+  top: -3px;
+  left: 0;
+  box-shadow: 0 0 10px rgba(62, 59, 189, 0.5);
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    opacity: 1;
+  }
+  10% {
+    -webkit-transform: rotate(36deg);
+    transform: rotate(36deg);
+    opacity: 0;
+  }
+  45% {
+    -webkit-transform: rotate(162deg);
+    transform: rotate(162deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    opacity: 1;
+  }
+  10% {
+    -webkit-transform: rotate(36deg);
+    transform: rotate(36deg);
+    opacity: 0;
+  }
+  45% {
+    -webkit-transform: rotate(162deg);
+    transform: rotate(162deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    opacity: 1;
+  }
 }
 #fly-main .left-nav .time-line-container {
   width: 130px;
@@ -174,8 +241,6 @@ body {
 }
 #fly-main .right-content {
   flex-grow: 4;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid #EEE;
   position: relative;
 }
 #fly-main .right-content .fly-slider-container {
@@ -185,13 +250,19 @@ body {
   top: 0;
   height: 700px;
   overflow: hidden;
-  background: #eee;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid #EEE;
 }
 #fly-main .right-content .fly-slider-container ul {
+  background: #eee;
   -webkit-transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
   -webkit-transition-timing-function: cubic-bezier(0.43, 0.6, 0, 0.98);
   transition-timing-function: cubic-bezier(0.43, 0.6, 0, 0.98);
+}
+#fly-main .right-content .fly-slider-container ul li img {
+  width: auto;
+  height: 100%;
 }
 @media all and (max-width: 1366px) {
   #fly-main {

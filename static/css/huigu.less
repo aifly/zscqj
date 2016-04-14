@@ -139,8 +139,70 @@ body {
     .fly-logo {
       width: .4rem;
       .position(a);
-      left: 170px;
+      left: 100px;
       top: 30%;
+      div{
+        .position(a);
+        width:2px;
+        height:76px;
+        left:37px;
+        box-sizing: border-box;
+        top:1px;
+
+        .animation(rotate 3s  infinite);
+        &:before{
+          content: '';
+          .position(a);
+          width:6px;
+          height:6px;
+          border-radius:50%;
+          background:rgba(230, 94, 81, 1);
+          top:-3px;
+          left:0;
+          box-shadow: 0 0 10px rgba(62, 59, 189, .5);
+          filter:blur(2px);
+          -webkit-filter:blur(2px);
+
+        }
+      }
+
+      @-webkit-keyframes rotate {
+        0%{
+          .transform(rotate(0));
+          opacity:1;
+        }
+        10%{
+          .transform(rotate(36deg));
+          opacity:0;
+        }
+        45%{
+          .transform(rotate(162deg));
+          opacity:0;
+        }
+        100%{
+          .transform(rotate(360deg));
+          opacity:1;
+        }
+      }
+      @keyframes rotate {
+        0%{
+          .transform(rotate(0));
+          opacity:1;
+        }
+        10%{
+          .transform(rotate(36deg));
+          opacity:0;
+        }
+        45%{
+          .transform(rotate(162deg));
+          opacity:0;
+        }
+        100%{
+          .transform(rotate(360deg));
+          opacity:1;
+        }
+      }
+
     }
     .time-line-container {
       width: 130px;
@@ -247,8 +309,7 @@ body {
   }
   .right-content {
     flex-grow: 4;
-    background: rgba(255, 255, 255, .4);
-    border:1px solid #EEE;
+
    .position(r);
     .fly-slider-container{
       .position(a);
@@ -257,10 +318,19 @@ body {
       top:0;
       height:700px;
       overflow: hidden;
-      background:#eee;
+      background: rgba(255, 255, 255, .4);
+      border:1px solid #EEE;
       ul{
+        background:#eee;
+
         .transition_transform(.5s);
         .transitionTimingFunction(cubic-bezier(0.43, 0.6, 0, 0.98));
+        li{
+          img{
+            width:auto;
+            height:100%;
+          }
+        }
       }
     }
   }

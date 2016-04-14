@@ -5,7 +5,7 @@
   -webkit-perspective: 800px;
 }
 body {
-  background: url("../images/loding-bg.jpg") no-repeat center bottom;
+  background: url("../images/temp.jpg") no-repeat center bottom;
 }
 .pub-bg {
   width: 100%;
@@ -33,10 +33,10 @@ body {
   width: 130px;
   height: 42px;
   position: relative;
-  -webkit-transition: 1.4s;
-  transition: 1.4s;
-  -webkit-transition-timing-function: cubic-bezier(0.76, -0.33, 0, 1.01);
-  transition-timing-function: cubic-bezier(0.76, -0.33, 0, 1.01);
+  -webkit-transition: 1.8s;
+  transition: 1.8s;
+  -webkit-transition-timing-function: cubic-bezier(0.72, -0.62, 0, 1.53);
+  transition-timing-function: cubic-bezier(0.72, -0.62, 0, 1.53);
   margin: 10px 0;
 }
 .pub-bg .pub-nav li.active {

@@ -165,7 +165,6 @@ body {
     .position(a);
     left:0;
     top:0;
-
   }
   .fly-logo-container{
     .transform3d;
@@ -253,7 +252,7 @@ body {
     width:1200px;
     height:400px;
     position: absolute;
-    bottom:10px;
+    bottom:-10px;
     left:50%;
     margin-left:-600px;
     canvas{
@@ -261,3 +260,18 @@ body {
   }
 }
 
+@media all and (max-width: 1366px) {
+  .nav-canvas-container{
+
+      top:50%;
+  }
+
+  #fly-main{
+    .fly-logo-container{
+      .fly-logo{
+        width:50%;
+      }
+    }
+  }
+
+}
