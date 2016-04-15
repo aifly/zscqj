@@ -118,3 +118,85 @@ body {
   height: 100%;
   overflow: hidden;
 }
+
+#fly-main{
+  .fly-header {
+    width: 80%;
+    margin-left: 70px;
+  }
+  .fly-logo {
+    width: 700px;
+    margin: 70px auto;
+
+    .position(r);
+    div {
+      .position(a);
+      width: 2px;
+      height: 100%;
+      left: 280px;
+      //.transform(rotate(90deg));
+      box-sizing: border-box;
+      top: 1px;
+      .animation(rotate 2.5s infinite);
+      &:before {
+        content: '';
+        .position(a);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(230, 94, 81, 1);
+        top: -3px;
+        left: 0;
+        box-shadow: 0 0 10px rgba(62, 59, 189, .5);
+        filter: blur(2px);
+        -webkit-filter: blur(2px);
+
+      }
+    }
+
+    @-webkit-keyframes rotate {
+      0% {
+        .transform(rotate(0));
+        opacity: 1;
+      }
+      10% {
+        .transform(rotate(36deg));
+        opacity: 0;
+      }
+      45% {
+        .transform(rotate(162deg));
+        opacity: 0;
+      }
+      100% {
+        .transform(rotate(360deg));
+        opacity: 1;
+      }
+    }
+    @keyframes rotate {
+      0% {
+        .transform(rotate(0));
+        opacity: 1;
+      }
+      10% {
+        .transform(rotate(36deg));
+        opacity: 0;
+      }
+      45% {
+        .transform(rotate(162deg));
+        opacity: 0;
+      }
+      100% {
+        .transform(rotate(360deg));
+        opacity: 1;
+      }
+    }
+  }
+
+  .fly-panner-container {
+    width: 84%;
+    height: 100px;
+    margin: 20px 0 0 70px;
+    border:1px solid red;
+
+  }
+}

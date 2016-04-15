@@ -118,7 +118,15 @@ body {
   height: 100%;
   overflow: hidden;
 }
-
+#temp{
+  .stop{
+    &:before,&:after{
+      opacity:0;
+      -webkit-animation-play-state: paused !important;
+      animation-play-state: paused !important;
+    }
+  }
+}
 #fly-main{
   .position(r);
   z-index:1;
@@ -209,6 +217,7 @@ body {
         color:#666666;
         border-radius: 5px;
         height:30px;
+        font-size: 18px;
         padding:5px 10px;
         &.active{
           color:#fff;
@@ -238,14 +247,14 @@ body {
           border-left: 5px solid transparent;
           border-right: 5px solid transparent;
           border-bottom: 10px solid #fff;
-          left:32px;
+          left:40px;
           bottom:-15px;
         }
       }
       &.after{
         a:nth-of-type(1):after{
           content:'';
-          left:132px;
+          left:152px;
           bottom:-15px;
         }
       }
@@ -260,6 +269,8 @@ body {
     }
   }
 }
+
+
 
 @media all and  (max-width: 1366px){
   #fly-main{

@@ -65,10 +65,13 @@ let util = {
                 container.addChild(c1);
 
                 c1.on('mousedown', (e)=> {
-                    var a = document.createElement('a');
-                    a.href = e.currentTarget.name+'.html';
-                    a.target = "_blank";
-                    a.click();
+                    if(e.currentTarget.name){
+                        var a = document.createElement('a');
+                        a.href = e.currentTarget.name+'.html';
+                        a.target = "_blank";
+                        a.click();
+                    }
+
                 })
 
             }

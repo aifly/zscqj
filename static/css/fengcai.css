@@ -53,3 +53,85 @@ body {
   height: 100%;
   overflow: hidden;
 }
+#fly-main .fly-header {
+  width: 80%;
+  margin-left: 70px;
+}
+#fly-main .fly-logo {
+  width: 700px;
+  margin: 70px auto;
+  position: relative;
+}
+#fly-main .fly-logo div {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  left: 280px;
+  box-sizing: border-box;
+  top: 1px;
+  -webkit-animation: rotate 2.5s infinite;
+  animation: rotate 2.5s infinite;
+}
+#fly-main .fly-logo div:before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e65e51;
+  top: -3px;
+  left: 0;
+  box-shadow: 0 0 10px rgba(62, 59, 189, 0.5);
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    opacity: 1;
+  }
+  10% {
+    -webkit-transform: rotate(36deg);
+    transform: rotate(36deg);
+    opacity: 0;
+  }
+  45% {
+    -webkit-transform: rotate(162deg);
+    transform: rotate(162deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    opacity: 1;
+  }
+  10% {
+    -webkit-transform: rotate(36deg);
+    transform: rotate(36deg);
+    opacity: 0;
+  }
+  45% {
+    -webkit-transform: rotate(162deg);
+    transform: rotate(162deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+#fly-main .fly-panner-container {
+  width: 84%;
+  height: 100px;
+  margin: 20px 0 0 70px;
+  border: 1px solid red;
+}

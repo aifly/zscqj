@@ -16,8 +16,10 @@ let data = {
 let util = {
     init(){
 
+        $("#temp .border-effect").classList.add("stop");
+
         this.setSize();
-        $("#province-canvas").width = parseFloat(this.getStyle($('#fly-main .fly-panner-container')).width);
+        $("#province-canvas").width = parseFloat(utilMethods.getStyle($('#fly-main .fly-panner-container')).width);
         $("#province-canvas").height = parseFloat(data.pannelC.style.height);
         this.bindEvent();
         let d = this.renderLoading();
@@ -26,8 +28,14 @@ let util = {
         for (let i = 1; i <= 32; i++) {
             imgArr.push('./static/images/' + i + '.png');
         }
+        createjs.Ticker.timingMode = createjs.Ticker.RAF;
+        createjs.Ticker.on('tick', tick);
 
+        var a = 0;
 
+        function tick(evt) {
+            !a && d.stage.update();
+        }
         class BitMap {
             constructor(option = {}) {
                 let s = this;
@@ -38,16 +46,6 @@ let util = {
                 s.render();
             }
 
-            fadeIn() {
-                let s = this;
-                s.bit.alpha += s.speed;
-
-                s.bit.alpha >= 1 && (s.bit.alpha = 1);
-                if(s.bit.alpha >= 1){
-                    s.bit.alpha = 1;
-                    BitMap.iNow++;
-                }
-            }
 
             render() {
                 let s = this;
@@ -59,16 +57,13 @@ let util = {
                 })
                 s.bit = bit;
                 s.container.addChild(bit);
-                s.stage.update();
+
             }
         }
         this.proviceArr = [];
-        this.loading(imgArr, (p, s)=> {
+        utilMethods.loading(imgArr, (p, s)=> {
             d.prec.text = Math.round(p * 100) + "%";
-
             this.proviceArr.push(new BitMap({src: s, container: d.container, stage: d.stage}));
-
-            d.stage.update();
 
 
         }, (s)=> {
@@ -76,49 +71,28 @@ let util = {
             this.proviceArr.push(new BitMap({src: s, container: d.container, stage: d.stage}));
 
             d.container.removeChild(d.prec, d.text);
-            this.proviceArr.forEach(item=>{
-                item.bit.alpha =1;
-            });
-            d.stage.update();
-          /*  BitMap.iNow =0 ;
-            let t = setInterval(()=> {
-                this.proviceArr.forEach(item=>{
-                    item.fadeIn();
-                });
-                if(BitMap.iNow>=this.proviceArr.length){
-                    clearInterval(t);
-                }
-                d.stage.update();
 
-            }, 17);*/
+            let iNow = 1;
+            let t = setInterval(()=> {
+
+                if (this.proviceArr[iNow]) {
+                    createjs.Tween.get(this.proviceArr[iNow].bit, {loop: false})
+                    .to({alpha: 1}, 1500, createjs.Ease.bounceOut);
+                }
+                else {
+                    clearInterval(t);
+                    createjs.Tween.get(this.proviceArr[0].bit, {loop: false})
+                    .to({alpha: 1}, 1500, createjs.Ease.bounceOut).call(()=> {
+                        a = 1;
+                        $("#temp .border-effect").classList.remove("stop");
+                    });
+                }
+                iNow++;
+            }, 300);
 
         })
 
     },
-    loading(arr, fn, fnEnd){
-        var len = arr.length;
-        var count = 0;
-        var i = 0;
-        loadimg();
-        function loadimg() {
-            if (i === len) {
-                return;
-            }
-            var img = new Image();
-            img.onload = img.onerror = ()=> {
-                count++;
-                if (i < len - 1) {
-                    i++;
-                    loadimg();
-                    fn && fn(i / (len - 1), img.src);
-                } else {
-                    fnEnd && fnEnd(img.src);
-                }
-            };
-            img.src = arr[i];
-        }
-    },
-
     renderLoading(){
         let canvas = $('#province-canvas');
         let stage = new createjs.Stage(canvas);
@@ -145,51 +119,18 @@ let util = {
 
         prec.x = canvas.width / 2;
         prec.y = canvas.height / 2 + 40;
-
         container.addChild(text, prec);
-
         stage.addChild(container);
-        stage.update();
-
-        /*  createjs.Ticker.timingMode = createjs.Ticker.RAF;
-         createjs.Ticker.on('tick', tick);
-
-         var i = 0;
-
-         function tick(evt) {
-         stage.update();
-         }*/
-
         return {container, prec, stage, text};
     },
 
     setSize(width = data.viewWidth, height = data.viewHeight){
-        data.pannelC.style.height = (height - parseFloat(this.getStyle(data.logo).marginTop) - 30 - data.header.offsetHeight) + 'px';
-        // $("#province-canvas").width = parseFloat(this.getStyle($('#fly-main .fly-panner-container')).width);
-        // $("#province-canvas").height = parseFloat(data.pannelC.style.height);
+        data.pannelC.style.height = (height - parseFloat(utilMethods.getStyle(data.logo).marginTop) - 30 - data.header.offsetHeight) + 'px';
+        // $("#province-canvas").width = parseFloat(utilMethods.getStyle($('#fly-main .fly-panner-container')).width);
+        // $("#province-canvas").height = parseFloat(utilMethods.pannelC.style.height);
         $('#fly-main .fly-logo').style.transform = 'scale(' + (width / 1920) + ')';
     },
-    getStyle(obj){
-        return window.getComputedStyle ? window.getComputedStyle(obj, null) : obj.currentStyle;
-    },
-    hasClass(obj, className){
-
-        return Array.from(obj.classList).indexOf(className) > -1;
-
-    },
-    index(obj){
-        let index = -1;
-        Array.from(obj.parentNode.children).forEach((item, i)=> {
-            if (obj === item) {
-                index = i;
-            }
-        });
-
-        return index;
-    },
     bindEvent(){
-
-
         window.addEventListener('resize', ()=> {
             let width = document.documentElement.clientWidth,
                 height = document.documentElement.clientHeight;
@@ -197,51 +138,22 @@ let util = {
         });
 
         document.addEventListener("click", e=> {
-            if (this.hasClass(e.target, 'nav')) {
+            if (utilMethods.hasClass(e.target, 'nav')) {
                 e.preventDefault();
                 let target = e.target;
                 Array.from($$('a', $('#fly-main .fly-pannel-bar'))).forEach(item=> {
                     item.classList.remove('active');
                 });
                 target.classList.add('active');
-                let index = this.index(target);
+                let index = utilMethods.index(target);
                 target.parentNode.classList[index === 1 ? 'add' : 'remove']('after');
-
             }
         });
-        //alert(utilMethods.getByTagName($('a',$('#fly-main .fly-pannel-bar .btn-group'))).length)
-    },
-
-    ajax(url, fn){
-        let xmlhttp = null;
-        if (window.XMLHttpRequest) {// code for all new browsers
-            xmlhttp = new XMLHttpRequest();
-        }
-        if (xmlhttp != null) {
-            xmlhttp.onreadystatechange = ()=> {
-                this.stateChange(xmlhttp, fn)
-            };
-            xmlhttp.overrideMimeType && xmlhttp.overrideMimeType('text/html');//设置MiME类别
-            xmlhttp.open("GET", url, true);
-            xmlhttp.send(null);
-        }
-    },
-    stateChange(xmlhttp, fn){
-        if (xmlhttp.readyState == 4) {// 4 = "loaded"
-            if (xmlhttp.status == 200) {// 200 = OK
-                fn && fn(xmlhttp.responseText)
-
-            }
-            else {
-                alert("Problem retrieving XML data");
-            }
-        }
     }
 };
 
-util.ajax('temp.html', data=> {
+utilMethods.ajax('temp.html', data=> {
     $("#temp").innerHTML = data;
-
     utilMethods.tempLoaded();
     util.init();
 });

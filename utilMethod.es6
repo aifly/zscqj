@@ -11,7 +11,97 @@ const  utilMethods = {
     r(m, n) {
         return (m + Math.random() * (n - m));
     },
+    loading(arr, fn, fnEnd){
+        var len = arr.length;
+        var count = 0;
+        var i = 0;
+        loadimg();
+        function loadimg() {
+            if (i === len) {
+                return;
+            }
+            var img = new Image();
+            img.onload = img.onerror = ()=> {
+                count++;
+                if (i < len - 1) {
+                    i++;
+                    loadimg();
+                    fn && fn(i / (len - 1), img.src);
+                } else {
+                    fnEnd && fnEnd(img.src);
+                }
+            };
+            img.src = arr[i];
+        }
+    },
+    getStyle(obj){
+        return window.getComputedStyle ? window.getComputedStyle(obj, null) : obj.currentStyle;
+    },
+    hasClass(obj, className){
 
+        return Array.from(obj.classList).indexOf(className) > -1;
+
+    },
+    index(obj){
+        let index = -1;
+        Array.from(obj.parentNode.children).forEach((item, i)=> {
+            if (obj === item) {
+                index = i;
+            }
+        });
+
+        return index;
+    },
+    bindEvent(){
+
+
+        window.addEventListener('resize', ()=> {
+            let width = document.documentElement.clientWidth,
+                height = document.documentElement.clientHeight;
+            this.setSize(width, height);
+        });
+
+        document.addEventListener("click", e=> {
+            if (this.hasClass(e.target, 'nav')) {
+                e.preventDefault();
+                let target = e.target;
+                Array.from($$('a', $('#fly-main .fly-pannel-bar'))).forEach(item=> {
+                    item.classList.remove('active');
+                });
+                target.classList.add('active');
+                let index = this.index(target);
+                target.parentNode.classList[index === 1 ? 'add' : 'remove']('after');
+
+            }
+        });
+        //alert(utilMethods.getByTagName($('a',$('#fly-main .fly-pannel-bar .btn-group'))).length)
+    },
+
+    ajax(url, fn){
+        let xmlhttp = null;
+        if (window.XMLHttpRequest) {// code for all new browsers
+            xmlhttp = new XMLHttpRequest();
+        }
+        if (xmlhttp != null) {
+            xmlhttp.onreadystatechange = ()=> {
+                this.stateChange(xmlhttp, fn)
+            };
+            xmlhttp.overrideMimeType && xmlhttp.overrideMimeType('text/html');//设置MiME类别
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send(null);
+        }
+    },
+    stateChange(xmlhttp, fn){
+        if (xmlhttp.readyState == 4) {// 4 = "loaded"
+            if (xmlhttp.status == 200) {// 200 = OK
+                fn && fn(xmlhttp.responseText)
+
+            }
+            else {
+                alert("Problem retrieving XML data");
+            }
+        }
+    },
     tempLoaded(){
         var link = document.createElement('link');
         link.href = './static/css/temp.min.css';
