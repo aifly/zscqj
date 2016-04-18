@@ -577,6 +577,9 @@
 	                id = i + 1;
 	            }
 	        });
+	        if (href.indexOf("detail.html") > -1) {
+	            id = 3;
+	        }
 
 	        $$("img", $$("#temp .pub-nav li")[id])[0].src = './static/images/nav-' + id + '.jpg';
 

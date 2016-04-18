@@ -170,7 +170,7 @@ body {
 #fly-main .fly-panner-container .fly-flex .item .fly-news-list li {
   line-height: 30px;
   position: relative;
-  padding-left: 30px;
+  padding-left: 20px;
   box-sizing: border-box;
 }
 #fly-main .fly-panner-container .fly-flex .item .fly-news-list li:before {
