@@ -214,3 +214,11 @@ body {
   -webkit-transform: rotateY(0);
   transform: rotateY(0);
 }
+@media all and (max-width: 1366px) {
+  #fly-main .fly-logo {
+    margin: 40px auto;
+  }
+  #fly-main .fly-panner-container {
+    margin: 0 auto;
+  }
+}

@@ -19,7 +19,7 @@ img {
   border: none;
   vertical-align: top;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 input, textarea {
@@ -98,11 +98,11 @@ input, textarea {
   animation: @value;
 }
 
-.transform3d {
+.transform3d(@value:800px) {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  perspective: 800px;
-  -webkit-perspective: 800px;
+  perspective: @value;
+  -webkit-perspective:@value;
 }
 
 .displayBox(@value) {
@@ -136,8 +136,7 @@ body {
   }
   .fly-logo{
     width:700px;
-    margin:70px auto ;
-
+    margin:50px auto 20px;
     .position(r);
     div{
       .position(a);
@@ -209,7 +208,6 @@ body {
     .btn-group{
       margin:0 auto;
       width:100%;
-
       text-align: center;
       a{
         background:#eee;
@@ -265,10 +263,190 @@ body {
     width:84%;
     height:100px;
     margin:20px 0 0 70px;
+    .position(r);
+    .transform3d(2200px);
     canvas{
+      .position(a);
+      left:0;
+      top:0;
+      .transition(.4s);
+
+      .transitionTimingFunction(cubic-bezier(0.07, 1.1, 0.64, 0.92));
+      backface-visibility: hidden;
+      &:nth-of-type(1){
+      }
+      &:nth-of-type(2){
+        .transform(rotateX(-90deg));
+      }
+    }
+    &.active{
+      canvas:nth-of-type(1){
+        .transform(rotateX(90deg));
+      }
+      canvas:nth-of-type(2){
+        .transform(rotateX(0));
+      }
     }
   }
 }
+
+.share {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  margin: 0;
+  z-index: 1;
+  font-size: 0.9em;
+}
+
+.credit {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  margin: 0;
+  z-index: 1;
+  font-size: 0.9em;
+}
+
+.credit a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.fly-mask{
+  .position(a);
+
+  z-index:10000;
+  top:0;
+  width:0;
+  left:50%;
+  height:100%;
+  overflow: hidden;
+  .transition(.3s);
+  .transitionTimingFunction(cubic-bezier(0, 0.97, 0.82, 0.97));
+  background:rgba(0,0,0,0.7);
+  &.show{
+    left:0;
+    width:100%;
+  }
+  header{
+    width:100%;
+
+    span{
+      display: inline-block;
+      font-size:60px;
+      color:#fff;
+      .position(a);
+      right:70px;
+      top:50px;
+      cursor: pointer;
+      .transition(.2s);
+      width:60px;
+      height:60px;
+      line-height:60px;
+      text-align: center;
+      z-index:100;
+      &:hover{
+        color:red;
+      }
+    }
+  }
+
+  .center{
+    .position(a);
+    left:50%;
+    top:50%;
+    .transform(translate3d(-50%,-50%,0));
+  }
+  .fly-h-gradient-line{
+    background: -webkit-gradient(linear, left top, right top, from(rgba(204, 204, 204, .2)), color-stop(0.5, rgba(204, 204, 204, 1)), to(rgba(204, 204, 204, .2)));
+    background: -moz-linear-gradient(left, rgba(204, 204, 204, .2), rgba(204, 204, 204, 1) 50%, rgba(204, 204, 204, .2));
+    background: -ms-linear-gradient(left, rgba(204, 204, 204, .2), rgba(204, 204, 204, 1) 50%, rgba(204, 204, 204, .2));
+  }
+
+  .fly-image-container{
+    width:1000px;
+    height:600px;
+    .center;
+    background: #fff;
+
+    .fly-content{
+      width:100%;
+      height:540px;
+      .loading-gif{
+        width: 100px !important;
+        height:100px !important;
+        .position(a);
+        left:50% !important;
+        top:50% !important;
+        .transform(translate3d(-50%,-50%,0)) !important;
+      }
+    }
+  }
+  .fly-text-container{
+    width:600px;
+    height:700px;
+    background:#fff;
+    //box-shadow:0 0 20px rgba(255,255,255,.8);
+
+    .center;
+    .fly-content{
+      width:90%;
+      padding:10px;
+      box-sizing:border-box;
+      height:600px;
+      margin:0px auto;
+      overflow: auto;
+      p{
+        margin:10px 0;
+        line-height:35px;
+        text-indent: 2em;
+        font-size:18px;
+        &:last-of-type{
+          float: right;
+          margin-top:30px;
+        }
+        span{
+          display: block;
+          height:30px;
+          width:100%;
+          text-align: right;
+        }
+
+
+      }
+    }
+
+
+  }
+
+  .fly-video-container{
+    width:1000px;
+    height:620px;
+    background:#fff;
+    .center;
+  }
+
+  .fly-city{
+    width:100%;
+    .position(a);
+    bottom:0;
+    text-align: center;
+    height:60px;
+    line-height:60px;
+    &:before{
+      content:"";
+      .position(a);
+      left:0;
+      top:0;
+      width:100%;
+      height:2px;
+      .fly-h-gradient-line;
+    }
+  }
+}
+
 
 
 

@@ -3,6 +3,7 @@
  */
 import {utilMethods,$,$$} from  './utilMethod.es6';
 
+
 let data = {
     viewWidth: document.documentElement.clientWidth,
     viewHeight: document.documentElement.clientHeight,
@@ -16,14 +17,13 @@ let util = {
         this.bindEvent();
     },
     setSize(width = data.viewWidth, height = data.viewHeight){
-        data.pannelC.style.height = (height - parseFloat(utilMethods.getStyle(data.logo).marginTop) - 100 - data.header.offsetHeight) + 'px';
+        let pannelH =(height - parseFloat(utilMethods.getStyle(data.logo).marginTop) - 100 - data.header.offsetHeight);
+        data.pannelC.style.height = pannelH + 'px';
         let w = $('.fly-flex').offsetWidth;
-        let h = 692 / 520 * w;
-
+        let h = 803 / 520 * w;
         Array.from($$(".fly-inner")).forEach(inner=> {
             inner.style.height = h + 'px';
         });
-
         Array.from($$(".item")).forEach(item=> {
             item.style.transformOrigin = 'center center -' + w / 2 + 'px';
             item.style.webkitTransformOrigin = 'center center -' + w / 2 + 'px';

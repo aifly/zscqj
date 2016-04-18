@@ -22,10 +22,42 @@
             </div>
         </section>
     </header>
-    <section class="fly-panner-container">
-        <canvas width="1200" height="500" id="province-canvas"></canvas>
+    <section class="fly-panner-container kontext">
+        <canvas width="1200" height="500" id="province-canvas" class="layer one show"></canvas>
+        <canvas width="1200" height="500" id="city-canvas" class="layer two"></canvas>
     </section>
 </article>
+<figure class="fly-mask " id="fly-mask">
+    <header>
+        <span class="fly-close">&times;</span>
+    </header>
+
+    <article class="fly-image-container fly-container" >
+        <article class="fly-content" ><img class='loading-gif' draggable="false" src="./static/images/loading1.gif" alt=""></article>
+        <div class="fly-city">大连</div>
+    </article>
+    <article class="fly-text-container  fly-container" hidden>
+        <div style="height: 40px;"></div>
+        <article class="fly-content" id="fly-text-container">
+
+        </article>
+        <div class="fly-city">大连</div>
+    </article>
+    <article class="fly-video-container  fly-container" hidden >
+        <article class="fly-content">
+            <video  width="100%" controls >
+                <source src="./static/video/h.mp4" type="video/mp4" />
+                <source src="./static/video/h.webm" type="video/webm"/>
+            </video>
+            <video  width="100%" controls hidden>
+                <source src="./static/video/jinan.mp4" type="video/mp4" />
+                <source src="./static/video/jinan.webm" type="video/webm"/>
+            </video>
+        </article>
+        <div class="fly-city">大连</div>
+    </article>
+
+</figure>
 <script src="./static/libs/createjs.js"></script>
 <script src="./static/js/shuhuai.js"></script>
 </body>

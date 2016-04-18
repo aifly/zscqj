@@ -224,7 +224,6 @@ body {
       .position(r);
 
       .item{
-
         .transition_transform(.8s );
         backface-visibility: hidden;
         .transitionTimingFunction(cubic-bezier(0, 0.91, 0.37, 0.94));
@@ -284,6 +283,17 @@ body {
       &:hover .fly-inner{
         .transform(rotateY(0));
       }
+    }
+  }
+}
+
+@media all and (max-width:1366px){
+  #fly-main{
+    .fly-logo{
+      margin:40px auto;
+    }
+    .fly-panner-container{
+      margin:0 auto;
     }
   }
 }

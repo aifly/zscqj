@@ -1,7 +1,7 @@
 /**
  created by fly on 2016/4/11 0011
  */
-const  utilMethods = {
+const utilMethods = {
     getGuid(){
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -33,6 +33,12 @@ const  utilMethods = {
             };
             img.src = arr[i];
         }
+    },
+    getQueryString(name){
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
     },
     getStyle(obj){
         return window.getComputedStyle ? window.getComputedStyle(obj, null) : obj.currentStyle;
@@ -102,7 +108,7 @@ const  utilMethods = {
             }
         }
     },
-    tempLoaded(){
+    tempLoaded(name){
         var link = document.createElement('link');
         link.href = './static/css/temp.min.css';
         link.rel = 'stylesheet';
@@ -113,6 +119,17 @@ const  utilMethods = {
         !Array.from && (Array.from = function (c) {
             return Array.prototype.slice.call(c);
         });
+
+
+        let href = window.location.href.split('/').pop();
+        let id = 1;
+        ["huigu.html","shuhuai.html","tushuo.html","licheng.html","fengcai.html"].forEach((h,i)=>{
+            if(href.indexOf(h)>-1){
+                id = i+1;
+            }
+        });
+
+        $$("img", $$("#temp .pub-nav li")[id])[0].src = './static/images/nav-' + id + '.jpg';
 
         var nav = _$(".pub-nav");
         var aLi = Array.from(nav.getElementsByTagName('li'));
@@ -152,10 +169,10 @@ const  utilMethods = {
         };
 
 
-        var n = new Nav({obj:nav});
-        var t = setInterval(function(){
+        var n = new Nav({obj: nav});
+        var t = setInterval(function () {
             n.move();
-        },17);
+        }, 17);
 
         addEvent(addEvent(nav, 'mouseover', function (e) {
             aLi.forEach(function (item, i) {
@@ -182,26 +199,26 @@ const  utilMethods = {
             });
             return obj;
         }
+
         function _$(selector) {
             return document.querySelector(selector);
         }
     }
 }
 
-if(!Array.from){
-    Array.from = (c)=>{
+if (!Array.from) {
+    Array.from = (c)=> {
         return Array.prototype.slice.call(c);
     }
 }
 
-let $ = (selector)=>{
+let $ = (selector)=> {
     return document.querySelector(selector);
 };
-let $$= (selector,parent)=>{
+let $$ = (selector, parent)=> {
     parent = parent || document;
     return parent.querySelectorAll(selector);
 };
 
 
-
-export default {utilMethods,$,$$};
+export default {utilMethods, $, $$};

@@ -11,7 +11,8 @@ let data = {
     main: $("#fly-main"),
     year: $('#fly-main .year'),
     sh: $('#s-h'),
-    sliderContainer: $('#fly-main .fly-slider-container')
+    sliderContainer: $('#fly-main .fly-slider-container'),
+    leftFill:$("#bg .left")
 };
 
 let util = {
@@ -60,6 +61,8 @@ let util = {
 
         this.h = h;
 
+        data.leftFill.width($("#fly-main .left-nav").width()+$("#fly-main .left-nav").offset().left);
+
         this.initSlider();
 
     },
@@ -67,7 +70,7 @@ let util = {
     initSlider(){
         let year= $('.year');
 
-        this.setTrantionDuration(0,0);
+       // this.setTrantionDuration(0,0);
         $('.fly-slider-container ul').css({'transform': 'translate3d(0,0,0)'});
         year.removeClass('active');
         year.eq(0).addClass("active");
@@ -98,7 +101,7 @@ let util = {
                 let index = target.index();
                 if (index === iNow) return;
                 iNow = index;
-                this.setTrantionDuration(index, last);
+                //this.setTrantionDuration(index, last);
                 this.slider(index, year, index, last);
                 last = index;
             }
@@ -112,14 +115,14 @@ let util = {
                 iNow--;
                 iNow < 0 && (iNow = 0);
                 this.slider(iNow, year, iNow, last);
-                this.setTrantionDuration();
+                //this.setTrantionDuration();
                 last = iNow;
             }
             else if (code === 40) { //下
                 iNow++;
                 iNow >= len - 1 && (iNow = len - 1);
                 this.slider(iNow, year, iNow, last);
-                this.setTrantionDuration();
+               // this.setTrantionDuration();
                 last = iNow;
             }
 

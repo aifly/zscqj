@@ -53,6 +53,27 @@ body {
   height: 100%;
   overflow: hidden;
 }
+#bg {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  z-index: 0;
+  display: -webkit-flex;
+}
+#bg aside {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.4);
+}
+#bg aside:nth-of-type(2) {
+  background: none;
+}
 #fly-main {
   z-index: 1;
   width: 1200px;
@@ -189,6 +210,17 @@ body {
   right: 0;
   top: 2px;
 }
+#fly-main .left-nav .time-line-container .year-container .year.active:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-right: 25px solid #fff;
+  border-bottom: 15px solid transparent;
+  right: -20px;
+  top: -3px;
+}
 #fly-main .left-nav .time-line-container .year-container .year.active .point {
   border: 1px solid rgba(103, 147, 250, 0.7);
   background: #eee;
@@ -241,6 +273,7 @@ body {
 }
 #fly-main .right-content {
   flex-grow: 4;
+  left: 20px;
   position: relative;
 }
 #fly-main .right-content .fly-slider-container {
@@ -250,11 +283,10 @@ body {
   top: 0;
   height: 700px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.4);
   border: 1px solid #EEE;
 }
 #fly-main .right-content .fly-slider-container ul {
-  background: #eee;
+  background: #fff;
   -webkit-transition: -webkit-transform 0.5s;
   transition: transform 0.5s;
   -webkit-transition-timing-function: cubic-bezier(0.43, 0.6, 0, 0.98);

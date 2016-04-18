@@ -1,8 +1,7 @@
 /**
  created by fly on 2016/4/11 0011
  */
-import {utilMethods} from  './utilMethod.es6';
-import {$} from './utilMethod.es6';
+import {utilMethods,$,$$} from  './utilMethod.es6';
 import './static/libs/EasePack.min';
 import './static/libs/TweenLite.min';
 import './static/js/header-canvas';
@@ -21,7 +20,17 @@ let data = {
 };
 
 let util = {
+
     init(){
+
+        utilMethods.loading([
+            './static/images/fengcai-1.png',
+            './static/images/tushuo-1.png',
+            './static/images/huigu-1.png',
+            './static/images/licheng-1.png',
+            './static/images/shuhuai-1.png'
+        ]);
+
         let s = this;
         s.setBg();
         s.setSize();
@@ -61,6 +70,7 @@ let util = {
                 let c1 = new createjs.Bitmap(s.src).set({scaleX: .8, scaleY: .8, x: s.x, y: s.y});
                 s.name && ( c1.cursor = 'pointer');
                 s.shape = c1;
+                let src = s.src;
                 c1.name = s.name;
                 container.addChild(c1);
 
@@ -71,8 +81,19 @@ let util = {
                         a.target = "_blank";
                         a.click();
                     }
+                });
 
-                })
+                c1.on('rollover',(e)=>{
+                    if(e.currentTarget.name){
+                        c1.image.src =  './static/images/'+e.currentTarget.name+"-1.png";
+                    }
+                });
+
+                c1.on('rollout',(e)=>{
+                    if(e.currentTarget.name){
+                        c1.image.src = src;
+                    }
+                });
 
             }
 
@@ -258,6 +279,10 @@ let util = {
     setSize (width = data.viewWidth, height = data.viewHeight){
         data.headerCanvas.width = width;
         data.headerCanvas.height = height / 3;
+
+
+
+
     },
     setBg(){
 

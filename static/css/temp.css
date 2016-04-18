@@ -20,7 +20,7 @@ body {
   transform-style: preserve-3d;
   perspective: 800px;
   -webkit-perspective: 800px;
-  position: absolute;
+  position: fixed;
   z-index: 3;
   right: 38px;
   top: 30%;
