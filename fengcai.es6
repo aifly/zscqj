@@ -1109,7 +1109,7 @@ utilMethods.ajax('temp.html', data=> {
     },()=>{
 
         jQuery('#mask').addClass('hide');
-
+        $('.loading').classList.add('hide');
         jQuery('img').each((i,n)=>{
             jQuery(n).attr('src',jQuery(n).data('src'));
         });

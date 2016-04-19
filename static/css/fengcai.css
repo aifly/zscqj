@@ -1074,6 +1074,11 @@ Pagination Styles
   position: absolute;
   left: 0;
   top: 0;
+  z-index: 999;
+  background: url("../images/loding-bg.jpg") no-repeat center center;
+  background-size: cover;
+  -webkit-filter: blur(20px);
+  filter: blur(20px);
 }
 #mask.hide {
   -webkit-transition: 0.3s;
@@ -1084,16 +1089,20 @@ Pagination Styles
   width: 0;
   left: 50%;
 }
-#mask .loading {
+.loading {
   width: 400px;
   height: 150px;
+  z-index: 1000;
   position: absolute;
   left: 50%;
   top: 50%;
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
 }
-#mask .loading div {
+.loading.hide {
+  display: none;
+}
+.loading div {
   text-align: center;
   font-size: 50px;
   color: #3e3bbd;

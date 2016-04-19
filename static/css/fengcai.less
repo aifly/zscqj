@@ -1128,19 +1128,30 @@ Pagination Styles
     width:0;
     left:50%;
   }
-  .loading{
-    width:400px;
-    height:150px;
+  z-index: 999;
+  background:url("../images/loding-bg.jpg") no-repeat center center;
+  background-size:cover;
 
-    .position(a);
-    left:50%;
-    top:50%;
-    .transform(translate3d(-50%,-50%,0));
-    div{
-      text-align: center;
-      font-size:50px;
-      color:rgba(62, 59, 189, 1);
-    }
+  -webkit-filter:blur(20px);
+  filter:blur(20px);
+
+}
+
+.loading{
+  &.hide{
+    display: none;
+  }
+  width:400px;
+  height:150px;
+  z-index:1000;
+  .position(a);
+  left:50%;
+  top:50%;
+  .transform(translate3d(-50%,-50%,0));
+  div{
+    text-align: center;
+    font-size:50px;
+    color:rgba(62, 59, 189, 1);
   }
 }
 

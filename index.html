@@ -13,9 +13,12 @@
 </head>
 <body>
 
-<div id="loading">
+<div id="mask">
    <!-- <img src="./static/images/loading.svg" alt="">-->
-    正在进入...
+
+</div>
+<div class="loading">
+    <div>正在进入...</div>
 </div>
 <article id="fly-main">
     <header class="sideshow">
@@ -44,10 +47,8 @@
         <canvas id="nav-canvas" width="1200" height="400"></canvas>
     </div>
 </article>
-
 <script src="static/libs/createjs.js"></script>
 <script id="script" src="static/js/index.js"
-        onload="document.getElementById('loading').classList.add('hide');document.getElementById('fly-main').classList.add('active')"></script>
-
+        onload="document.getElementById('mask').classList.add('hide');document.querySelector('.loading').classList.add('hide');document.getElementById('fly-main').classList.add('active')"></script>
 </body>
 </html>

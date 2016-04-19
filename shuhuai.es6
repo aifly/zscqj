@@ -452,7 +452,6 @@ let data = {
     ]
 };
 
-
 let util = {
     init(){
 

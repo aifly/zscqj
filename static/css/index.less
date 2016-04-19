@@ -120,31 +120,6 @@ body {
 }
 
 
-#loading{
-  width:100%;
-  height:100%;
-  color:#fff;
-  font-size: 20px;
-  position: absolute;
-  background:#07ecd0;
-  overflow: hidden;
-  .transition(.7s);
-  z-index:100;
-  .transitionTimingFunction(cubic-bezier(0.18, 1.18, 1, 0.99));
-  &.hide{
-    opacity:0;
-    z-index:-1;
-  }
-}
-
-#loading img{
-  width:100px;
-  height:100px;
-  position: absolute;
-  left:50%;
-  top:50%;
-  margin:-50px 0 0 -50px;
-}
 
 #fly-main{
   opacity:0;
@@ -254,6 +229,50 @@ body {
     margin-left:-600px;
     canvas{
     }
+  }
+}
+
+
+
+#mask{
+  width:100%;
+  height:100%;
+  background:#fff;
+  .position(a);
+  left:0;
+  top:0;
+
+  &.hide{
+    .transition(.3s);
+    .transitionTimingFunction(cubic-bezier(0, 0.97, 0.82, 0.97));
+    overflow:hidden;
+    width:0;
+    left:50%;
+  }
+  z-index: 999;
+  background:url("../images/loding-bg.jpg") no-repeat center center;
+  background-size:cover;
+
+  -webkit-filter:blur(20px);
+  filter:blur(20px);
+
+}
+
+.loading{
+  &.hide{
+    display: none;
+  }
+  width:400px;
+  height:150px;
+  z-index:1000;
+  .position(a);
+  left:50%;
+  top:50%;
+  .transform(translate3d(-50%,-50%,0));
+  div{
+    text-align: center;
+    font-size:50px;
+    color:rgba(62, 59, 189, 1);
   }
 }
 
