@@ -202,9 +202,8 @@ body {
   .fly-panner-container {
     width: 70%;
     height: 100px;
-    margin: 20px auto;
+    margin: 20px 0 20px 170px ;
     .displayFlex(row);
-
     .fly-flex{
 
       &:nth-of-type(2){
@@ -287,13 +286,42 @@ body {
   }
 }
 
+@media all and (max-width:1440px){
+  #fly-main{
+    .fly-panner-container{
+
+      .fly-flex{
+        .item{
+          .fly-news-list{
+            width:90%;
+            li{
+              line-height:28px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media all and (max-width:1366px){
   #fly-main{
     .fly-logo{
       margin:40px auto;
     }
     .fly-panner-container{
-      margin:0 auto;
+
+      margin: 0 0 0 100px ;
+      .fly-flex{
+        .item{
+          .fly-news-list{
+            width:90%;
+            li{
+              line-height:25px;
+            }
+          }
+        }
+      }
     }
   }
 }

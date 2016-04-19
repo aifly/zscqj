@@ -108,7 +108,7 @@ const utilMethods = {
             }
         }
     },
-    tempLoaded(name){
+    tempLoaded(){
         var link = document.createElement('link');
         link.href = './static/css/temp.min.css';
         link.rel = 'stylesheet';
@@ -131,6 +131,8 @@ const utilMethods = {
         if(href.indexOf("detail.html")>-1){
             id = 3;
         }
+
+
 
         $$("img", $$("#temp .pub-nav li")[id])[0].src = './static/images/nav-' + id + '.jpg';
 

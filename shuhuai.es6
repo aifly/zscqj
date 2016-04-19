@@ -128,8 +128,9 @@ let data = {
                         <p>重庆市知识产权局局长袁杰</p>`,
             city: "重庆"
         }, {
-            type: 'image',//20
-            src: "./static/images/p-1.jpg",
+            type: 'text',//20
+            contnt: `<p>今年是知识产权系统门户网站正式开通十周年，作为展示全国知识产权工作的重要窗口，推送政府信息的重要渠道和提供公共信息服务的重要平台，十年来，门户网站准确把握时代发展脉搏，紧扣知识产权事业建设主线，在宣传知识产权创造、运用、保护、管理、服务、合作交流等各方面都取得了丰硕的成果，在推进政务公开、提高办事效率、架设沟通桥梁等方面发挥了良好的作用。今年，是“十三五”的开局之年，衷心祝愿门户网站在知识产权强国建设的事业发展中百尺竿头、更进一步，再上新的台阶！</p>
+                     <p>四川省知识产权局 局长 黄峰</p>`,
             city: "四川"
         },
         {
@@ -256,7 +257,7 @@ let data = {
         }, {
             type: 'text',
             content: `<p>十年坚持，铸造辉煌；十年努力，塑造形象！祝贺全国知识产权局系统政府门户网站正式开通十周年！</p>
-                       <p>重庆局</p>`,
+                       <p>重庆局周冬梅</p>`,
             city: '重庆'
         }, {
             type: 'text',
@@ -489,12 +490,13 @@ let util = {
                 s.src = option.src;
                 s.stage = option.stage;
                 s.speed = .01;
+                s.k = option.k || 800;
                 s.render();
             }
 
             render() {
                 let s = this;
-                let scale = $("#province-canvas").height / 800;
+                let scale = $("#province-canvas").height / s.k;
                 let bit = new createjs.Bitmap(s.src).set({scaleX: scale, scaleY: scale});
                 bit.alpha = 1;
                 bit.on('mousedown', e=> {
@@ -512,7 +514,7 @@ let util = {
                             case "image":
                                 self.initMaskContent(dt.type, dt.src, ()=> {
                                     let img = $('.fly-image-container .fly-content img');
-                                    img.style.opacity =1 ;
+                                    img.style.opacity = 1;
                                     img.src = dt.src;
                                     img.classList.remove('loading-gif');
                                 });
@@ -528,7 +530,6 @@ let util = {
                                 $$("video", data.mask)[index].play();
                                 break;
                         }
-
 
 
                         $('.fly-' + dt.type + '-container .fly-city').innerHTML = dt.city;
@@ -573,7 +574,7 @@ let util = {
             for (let i = 1; i < 45; i++) {
                 cityImgArr.push('./static/images/c-' + i + '.png');
             }
-            let d1 = this.renderLoading(data.cityCanvas, 'city');
+            let d1 = this.renderLoading(data.cityCanvas, 'city', 1595, 670);
             this.d1 = d1;
             this.cityArr = [];
             utilMethods.loading(cityImgArr, (p, s)=> {
@@ -581,7 +582,7 @@ let util = {
             }, ()=> {
 
                 cityImgArr.forEach(s=> {
-                    this.cityArr.push(new this.BitMap({src: s, container: d1.container, stage: d1.stage}));
+                    this.cityArr.push(new this.BitMap({src: s, k: 750, container: d1.container, stage: d1.stage}));
                 });
                 d1.stage.removeChild(d1.prec, d1.text);
                 d1.container.alpha = 1;
@@ -589,15 +590,11 @@ let util = {
                     this.b = 0;
                 }, 500);
 
-                /*createjs.Tween.get(d1.container, {loop: false})
-                 .to({alpha: 1}, 1500, createjs.Ease.linear).call(()=> {
-                 this.b = 0;
-                 });*/
             });
         }
     },
 
-    renderLoading(canvas, type){
+    renderLoading(canvas, type, w = 1700, h = 800){
 
         let stage = new createjs.Stage(canvas);
         let container = new createjs.Container();
@@ -618,8 +615,9 @@ let util = {
         prec.y = 300;
         prec.textAlign = "center";
         //text.textBaseline = "top";
+        let cX = (canvas.width - canvas.height / h * w) / 2;
+        container.x = cX <= 0 ? 0 : cX;
 
-        container.x = (canvas.width - canvas.height / 800 * 1700) / 2;
 
         prec.x = canvas.width / 2;
         prec.y = canvas.height / 2 + 40;
@@ -678,12 +676,12 @@ let util = {
 
         data.close.addEventListener('click', ()=> {
             data.mask.classList.remove('show');
-            let img = $('.fly-image-container .fly-content img',data.mask);
-            img.style.opacity=0;
-            setTimeout(()=>{
+            let img = $('.fly-image-container .fly-content img', data.mask);
+            img.style.opacity = 0;
+            setTimeout(()=> {
                 img.classList.add('loading-gif');
                 img.src = './static/images/loading1.gif';
-            },400);
+            }, 400);
             Array.from($$('video', data.mask)).forEach(video=> {
                 video.style.display = 'none';
                 video.pause();
