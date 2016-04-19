@@ -191,8 +191,10 @@ body {
   position: absolute;
 }
 #fly-main .fly-panner-container .fly-panner-containers .fly-shurong .fly-shurong-container {
-  width: 80%;
-  height: 100%;
+  /*width: 80%;*/
+  width: 950px;
+  /*height: 100%;*/
+  height: 450px;
   text-align: center;
   margin: 0 auto;
   background: #ffffff;
@@ -534,6 +536,9 @@ body {
   /*background: url('img/t01.png') -800px -800px no-repeat;*/
   _background: none;
 }
+.jssort01 .fly-slides {
+  overflow: overlay !important;
+}
 .jssort01 .pav .c {
   top: 0px;
   _top: 0px;
@@ -541,17 +546,40 @@ body {
   _left: 0px;
   width: 119px;
   height: 65px;
-  border: #5596fa 3px solid;
-  _border: #5596fa 3px solid;
+  border: #5596fa 4px solid;
+  _border: #5596fa 4px solid;
   background-position: 50% 50%;
+  /*&:after {
+    content: '';
+    .position(a);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid #5596fa;
+    top:-10px;
+//    left: 45px;
+//    bottom: -15px;
+  }*/
 }
 .jssort01 .p:hover .c {
   top: 0px;
   left: 0px;
   width: 119px;
   height: 65px;
-  border: #5596fa 3px solid;
+  border: #5596fa 4px solid;
   background-position: 50% 50%;
+  /*&:after {
+    content: '';
+    .position(a);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 10px solid #000;
+    left: 45px;
+    bottom: -15px;
+  }*/
 }
 .jssort01 .p.pdn .c {
   background-position: 50% 50%;
@@ -1139,6 +1167,20 @@ Pagination Styles
   #fly-main .swiper-wrapper {
     padding-left: 325px !important;
     padding-right: 0px !important;
+  }
+  #fly-main .swiper-slide-visible {
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  #fly-main .swiper-slide-active {
+    -webkit-transform: scale(0.7);
+    -moz-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    transform: scale(0.7);
   }
   #fly-main .rowE .count li {
     margin-right: 15px;

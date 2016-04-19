@@ -1089,6 +1089,7 @@ let util = {
                 target.classList.add('active');
             }
         });
+
         this.jQueryFn(jQuery);
         this.jssor_1_slider_init();
         this.gallery_init(jQuery);
