@@ -208,6 +208,15 @@ body {
   -webkit-transform: translate3d(200%, 0px, 0px);
   transform: translate3d(200%, 0px, 0px);
 }
+#fly-main .fly-panner-container .fly-panner-containers .fly-zizhanchengzhang .fly-zizhanl,
+#fly-main .fly-panner-container .fly-panner-containers .fly-zizhanchengzhang .fly-zizhanr {
+  cursor: pointer;
+  background: url('../images/zizhan.png') no-repeat;
+}
+#fly-main .fly-panner-container .fly-panner-containers .fly-zizhanchengzhang .fly-zizhanl {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
 #fly-main .fly-panner-container .fly-panner-containers .fly-edit {
   width: 97.5%;
   height: 98%;
@@ -536,9 +545,6 @@ body {
   /*background: url('img/t01.png') -800px -800px no-repeat;*/
   _background: none;
 }
-.jssort01 .fly-slides {
-  overflow: overlay !important;
-}
 .jssort01 .pav .c {
   top: 0px;
   _top: 0px;
@@ -549,18 +555,17 @@ body {
   border: #5596fa 4px solid;
   _border: #5596fa 4px solid;
   background-position: 50% 50%;
-  /*&:after {
-    content: '';
-    .position(a);
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 20px solid #5596fa;
-    top:-10px;
-//    left: 45px;
-//    bottom: -15px;
-  }*/
+}
+.jssort01 .pav .c:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid #5596fa;
+  top: -20px;
+  left: 45px;
 }
 .jssort01 .p:hover .c {
   top: 0px;
@@ -569,23 +574,12 @@ body {
   height: 65px;
   border: #5596fa 4px solid;
   background-position: 50% 50%;
-  /*&:after {
-    content: '';
-    .position(a);
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 10px solid #000;
-    left: 45px;
-    bottom: -15px;
-  }*/
 }
 .jssort01 .p.pdn .c {
   background-position: 50% 50%;
   width: 119px;
   height: 65px;
-  border: #5596fa 3px solid;
+  border: #5596fa 4px solid;
 }
 * html .jssort01 .c,
 * html .jssort01 .pdn .c,
@@ -776,8 +770,8 @@ Basic Swiper Styles
   z-index: 1;
 }
 .swiper-wrapper {
-  padding-left: 400px !important;
-  padding-right: 0px !important;
+  /*padding-left:400px !important;
+  padding-right:0px !important;*/
   position: relative;
   width: 100%;
   -webkit-transition-property: -webkit-transform, left, top;
@@ -998,6 +992,10 @@ Pagination Styles
   .rowE .count .img_wrap img {
     width: 455px;
   }
+  #fly-main .fly-panner-container .fly-panner-containers .fly-shurong .fly-shurong-container {
+    -webkit-transform: scale(1.5) translate3d(0px, 90px, 0px);
+    transform: scale(1.5) translate3d(0px, 90px, 0px);
+  }
   .swiper-slide-visible {
     -webkit-transform: scale(0.56);
     -moz-transform: scale(0.56);
@@ -1011,102 +1009,6 @@ Pagination Styles
     -ms-transform: scale(1);
     -o-transform: scale(1);
     transform: scale(1);
-  }
-  /* jssor slider arrow navigator skin 05 css */
-  /*
-.jssora05l                  (normal)
-.jssora05r                  (normal)
-.jssora05l:hover            (normal mouseover)
-.jssora05r:hover            (normal mouseover)
-.jssora05l.jssora05ldn      (mousedown)
-.jssora05r.jssora05rdn      (mousedown)
-*/
-  .jssora05l,
-  .jssora05r {
-    display: block;
-    position: absolute;
-    /* size of arrow element */
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    background: url('../images/a17.png') no-repeat;
-    overflow: hidden;
-  }
-  .jssora05l {
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
-  }
-  /* jssor slider thumbnail navigator skin 01 css */
-  /*
-.jssort01 .p            (normal)
-.jssort01 .p:hover      (normal mouseover)
-.jssort01 .p.pav        (active)
-.jssort01 .p.pdn        (mousedown)
-*/
-  .jssort01 .p {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 125px;
-    height: 72px;
-  }
-  .jssort01 .t {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-  .jssort01 .w {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-  }
-  .jssort01 .c {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 125px;
-    height: 72px;
-    border: #fff 3px solid;
-    box-sizing: content-box;
-    /*background: url('img/t01.png') -800px -800px no-repeat;*/
-    _background: none;
-  }
-  .jssort01 .pav .c {
-    top: 0px;
-    _top: 0px;
-    left: 0px;
-    _left: 0px;
-    width: 119px;
-    height: 65px;
-    border: #5596fa 3px solid;
-    _border: #5596fa 3px solid;
-    background-position: 50% 50%;
-  }
-  .jssort01 .p:hover .c {
-    top: 0px;
-    left: 0px;
-    width: 119px;
-    height: 65px;
-    border: #5596fa 3px solid;
-    background-position: 50% 50%;
-  }
-  .jssort01 .p.pdn .c {
-    background-position: 50% 50%;
-    width: 119px;
-    height: 65px;
-    border: #5596fa 3px solid;
-  }
-  * html .jssort01 .c,
-  * html .jssort01 .pdn .c,
-  * html .jssort01 .pav .c {
-    /* ie quirks mode adjust */
-    width: 72px;
-    height: 72px;
   }
 }
 #mask {
